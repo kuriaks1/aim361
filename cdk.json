@@ -1,0 +1,58 @@
+{
+  "app": "python app.py",
+  "watch": {
+    "include": [
+      "**"
+    ],
+    "exclude": [
+      "README.md",
+      "cdk*.json",
+      "requirements*.txt",
+      "source.bat",
+      "**/__init__.py",
+      "python/__pycache__",
+      "tests"
+    ]
+  },
+  "context": {
+    "@aws-cdk/aws-apigateway:usagePlanKeyOrderInsensitiveId": true,
+    "@aws-cdk/core:stackRelativeExports": true,
+    "@aws-cdk/aws-rds:lowercaseDbIdentifier": true,
+    "@aws-cdk/aws-lambda:recognizeVersionProps": true,
+    "@aws-cdk/aws-cloudfront:defaultSecurityPolicyTLSv1.2_2021": true,
+    "@aws-cdk-containers/ecs-service-extensions:enableDefaultLogDriver": true,
+    "@aws-cdk/aws-ec2:uniqueImdsv2TemplateName": true,
+    "@aws-cdk/core:checkSecretUsage": true,
+    "@aws-cdk/aws-iam:minimizePolicies": true,
+    "@aws-cdk/core:target-partitions": [
+      "aws",
+      "aws-cn"
+    ],
+    "config": {
+      "accounts": {
+        "tooling": {
+          "account": "463627840046",
+          "region": "us-west-2"
+        },
+        "dev": {
+          "account": "739835506310",
+          "region": "us-west-2"
+        },
+        "qa": {
+          "account": "607849167525",
+          "region": "us-west-2"
+        },
+        "prod": {
+          "account": "905032580712",
+          "region": "us-west-2"
+        }
+      },
+      "internet_vpc": "vpc-xx",
+      "development_branch": "dev",
+      "production_branch": "main",
+      "owner": "kuriaks1",
+      "repo": "aim361",
+      "connection_arn": "arn:aws:codeconnections:us-west-2:463627840046:connection/d64eed86-6a26-4fdd-9e2e-356844294fd0"
+    }
+  }
+}

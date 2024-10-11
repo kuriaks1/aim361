@@ -47,7 +47,7 @@ BootstrapRoleStack(
     app,
     "bootstrap-prod-role-stack",
     account="prod",
-    toolchain_account=accounts.get("tooling"),
+    toolchain_account=accounts.get("tooling").get("account"),
     env={
         "account": prod_account,
         "region": region,

@@ -7,5 +7,5 @@ class ExampleS3(object):
         self.value = value
 
     def save(self):
-        s3 = boto3.client('s3', region_name='us-east-1')
+        s3 = boto3.client('s3', region_name='us-west-2')
         s3.put_object(Bucket='myS3bucket', Key=self.name, Body=self.value)
