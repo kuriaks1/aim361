@@ -67,7 +67,7 @@ CDK_JSON = os.path.abspath(
 @mock_s3
 def test_save():
     s3 = boto3.resource("s3", region_name="us-west-2")
-    s3.create_bucket(Bucket="myS3bucket")
+    s3.create_bucket(Bucket="myS3bucket", CreateBucketConfiguration={'LocationConstraint': 'us-west-2'})
 
     instance = ExampleS3("test_name", "test_value")
     instance.save()
