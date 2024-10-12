@@ -49,7 +49,7 @@
       },
       "internet_vpc": "vpc-xx",
       "development_branch": "dev",
-      "production_branch": "main",
+      "production_branch": "dev",
       "owner": "kuriaks1",
       "repo": "aim361",
       "connection_arn": "arn:aws:codeconnections:us-west-2:463627840046:connection/d64eed86-6a26-4fdd-9e2e-356844294fd0"
