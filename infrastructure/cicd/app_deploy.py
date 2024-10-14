@@ -7,6 +7,14 @@ from infrastructure.s3bucket_stack import S3Stack
 from infrastructure.batch.job_defs_stack import JobDefsStack
 from infrastructure.lambdas.infra import LambdaCognitoStack
 
+from cdk_nag import AwsSolutionsChecks, NagSuppressions
+
+from aws_cdk import (
+    Stage,
+    # Import Aspects
+    Aspects
+)
+
 
 class AppDeployBootstrap(Stage):
     def __init__(self, scope: Construct, id: str, config: dict = None, **kwargs):
@@ -51,6 +59,13 @@ class AppDeploy(Stage):
         "LambdaCogDesciption",
         config=config,
         )
+
+        Aspects.of(lambda_cognito).add(AwsSolutionsChecks(verbose=True))
+        # Add Suppression
+        NagSuppressions.add_stack_suppressions(stack=lambda_cognito, suppressions=[
+            {"id": "AwsSolutions-IAM4", "reason": "Policies are set by the Construct."}
+        ])
+
         
 
 

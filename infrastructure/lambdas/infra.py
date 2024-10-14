@@ -13,11 +13,6 @@ from aws_cdk import (
 from constructs import Construct
 import cdk_nag
 
-from cdk_nag import (
-    NagPackSuppression,
-    NagSuppressions
-)
-
 class LambdaCognitoStack(Stack):
 
     def __init__(self, 
@@ -156,13 +151,6 @@ class LambdaCognitoStack(Stack):
 
 
         _NagSuppressions = cdk_nag.NagSuppressions()
-
-        NagSuppressions.add_resource_suppressions_by_path(
-            self,
-            f"/cdk-pipeline/{id}/LambdaCogStack/bedrock_lambda_api/CloudWatchRole/Resource",
-            [NagPackSuppression(id="AwsSolutions-IAM4", reason="Policies are set by the Construct.")],
-            True
-        )
 
         # Add Nag Suppressions here
 
