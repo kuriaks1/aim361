@@ -5,6 +5,7 @@ from infrastructure.ecr_stack import EcrStack
 from infrastructure.lambdas.example_lambda import ExampleLambda
 from infrastructure.s3bucket_stack import S3Stack
 from infrastructure.batch.job_defs_stack import JobDefsStack
+from infrastructure.lambdas.infra import LambdaCognitoStack
 
 
 class AppDeployBootstrap(Stage):
@@ -43,3 +44,13 @@ class AppDeploy(Stage):
             "LambdaDesciption",
             config=config,
         )
+        
+        lambda_cognito = LambdaCognitoStack(
+        self,
+        "LambdaCogStack",
+        "LambdaCogDesciption",
+        config=config,
+        )
+        
+
+

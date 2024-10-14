@@ -31,19 +31,19 @@
     "config": {
       "accounts": {
         "tooling": {
-          "account": "463627840046",
+          "account": "579664294219",
           "region": "us-west-2"
         },
         "dev": {
-          "account": "739835506310",
+          "account": "560604157826",
           "region": "us-west-2"
         },
         "qa": {
-          "account": "607849167525",
+          "account": "446278544519",
           "region": "us-west-2"
         },
         "prod": {
-          "account": "905032580712",
+          "account": "853149178726",
           "region": "us-west-2"
         }
       },
@@ -52,7 +52,7 @@
       "production_branch": "dev",
       "owner": "kuriaks1",
       "repo": "aim361",
-      "connection_arn": "arn:aws:codeconnections:us-west-2:463627840046:connection/d64eed86-6a26-4fdd-9e2e-356844294fd0"
+      "connection_arn": "arn:aws:codeconnections:us-west-2:579664294219:connection/9d3780a4-59fa-4121-b2e0-4b671eb47166"
     }
   }
 }
