@@ -12,6 +12,11 @@ from aws_cdk.pipelines import CodePipeline
 from infrastructure.cicd.app_deploy import AppDeploy, AppDeployBootstrap
 from infrastructure.cicd.toolchain_deploy import ToolchainDeploy
 
+from cdk_nag import (
+    NagPackSuppression,
+    NagSuppressions
+)
+
 
 class PipelineStack(Stack):
     def __init__(
@@ -72,6 +77,12 @@ class PipelineStack(Stack):
                     privileged=True,
                 )
             ),
+        )
+
+        NagSuppressions.add_resource_suppressions(
+            self,
+            [NagPackSuppression(id="AwsSolutions-IAM4", reason="The service role permission for cloudwatch logs are handled by the Construct.")],
+            True
         )
 
         toolchain_app = ToolchainDeploy(

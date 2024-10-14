@@ -13,6 +13,10 @@ from aws_cdk import (
 from constructs import Construct
 import cdk_nag
 
+from cdk_nag import (
+    NagPackSuppression,
+    NagSuppressions
+)
 
 class LambdaCognitoStack(Stack):
 
@@ -153,6 +157,13 @@ class LambdaCognitoStack(Stack):
 
         _NagSuppressions = cdk_nag.NagSuppressions()
 
+        NagSuppressions.add_resource_suppressions_by_path(
+            self,
+            f"/cdk-pipeline/{id}/LambdaCogStack/bedrock_lambda_api/CloudWatchRole/Resource",
+            [NagPackSuppression(id="AwsSolutions-IAM4", reason="Policies are set by the Construct.")],
+            True
+        )
+
         # Add Nag Suppressions here
 
         _NagSuppressions.add_resource_suppressions(
@@ -161,10 +172,6 @@ class LambdaCognitoStack(Stack):
                 {
                     "id": "AwsSolutions-IAM5",
                     "reason": "The wildcard exists to allow the lambda function to invoke any foundational model in Bedrock. Users must explicitly enable access to all foundational models in the Amazon Bedrock Web Console first."
-                },
-                {
-                    "id": "AwsSolutions-IAM4",
-                    "reason": "The IAM user, role, or group uses AWS managed policies. An AWS·managed policy·is a standalone·policy·that is created and administered by AWS. Currently, many AWS managed policies do not restrict resource scope. Replace AWS managed policies with system specific (customer) managed policies.This is a granular rule that returns individual findings that can be suppressed with 'appliesTo'."
                 }
             ],
             apply_to_children=True

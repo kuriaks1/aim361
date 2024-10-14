@@ -2,9 +2,6 @@
 cdk project with codepipeline to deploy aws resources to stage accounts  
 https://github.com/wolfgangunger/cdk-codepipeline  
   
-see also  
-https://www.sccbrasil.com/blog/aws/cdk-pipeline.html  
-https://www.sccbrasil.com/blog/aws/cdk-stack-construct.html  
   
 you can test the project also in just one account.  
 in this case your toolchain account and one stage account will be in the same account.  
