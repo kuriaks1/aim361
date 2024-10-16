@@ -79,12 +79,6 @@ class PipelineStack(Stack):
             ),
         )
 
-        NagSuppressions.add_resource_suppressions(
-            self,
-            [NagPackSuppression(id="AwsSolutions-IAM4", reason="The service role permission for cloudwatch logs are handled by the Construct.")],
-            True
-        )
-
         toolchain_app = ToolchainDeploy(
             self,
             "toolchain",

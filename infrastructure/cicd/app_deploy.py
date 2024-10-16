@@ -9,6 +9,10 @@ from infrastructure.lambdas.infra import LambdaCognitoStack
 
 from cdk_nag import AwsSolutionsChecks, NagSuppressions
 
+from bedrockstack.automation_stack import AutomationStack
+from bedrockstack.guardrails_stack import GuardrailsStack
+from bedrockstack.prompt_stack import PromptStack
+
 from aws_cdk import (
     Stage,
     # Import Aspects
@@ -52,7 +56,7 @@ class AppDeploy(Stage):
             "LambdaDesciption",
             config=config,
         )
-        
+        """
         lambda_cognito = LambdaCognitoStack(
         self,
         "LambdaCogStack",
@@ -65,6 +69,28 @@ class AppDeploy(Stage):
         NagSuppressions.add_stack_suppressions(stack=lambda_cognito, suppressions=[
             {"id": "AwsSolutions-IAM4", "reason": "Policies are set by the Construct."}
         ])
+        """
+
+        automation_stack = AutomationStack(
+        self,
+        "AutomationStack",
+        "Automation with StepFunctions",
+        config=config,
+        )
+
+        guardrails_stack = GuardrailsStack(
+        self,
+        "GuardrailsStack",
+        "Bedrock Guardrails",
+        config=config,
+        )
+
+        prompt_stack = PromptStack(
+        self,
+        "PromptStack",
+        "Bedrock Prompts",
+        config=config,
+        )
 
         
 
